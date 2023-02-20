@@ -1,0 +1,31 @@
+#!/bin/bash
+case "$1" in
+    start)
+        if [ "${EUID}" -eq 0 ]; then
+            sudo -u consul synosystemctl start pkguser-consul
+        else
+            synosystemctl start pkguser-consul
+        fi
+        ;;
+    stop)
+        if [ "${EUID}" -eq 0 ]; then
+            sudo -u consul synosystemctl stop pkguser-consul
+        else
+            synosystemctl stop pkguser-consul
+        fi
+        ;;
+    status)
+        if [ "${EUID}" -eq 0 ]; then
+            sudo -u consul synosystemctl get-active-status pkguser-consul
+        else
+            synosystemctl get-active-status pkguser-consul
+        fi
+        ;;
+    log)
+        echo ""
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|status}" >&2
+        exit 1
+        ;;
+esac

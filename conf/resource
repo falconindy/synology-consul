@@ -1,0 +1,17 @@
+{
+    "systemd-user-unit":{},
+	"usr-local-linker": {
+		"bin": ["package/bin/consul"]
+	},
+    "data-share": {
+        "shares": [{
+            "name": "consul",
+            "permission": {
+                "rw": ["consul"]
+            }
+        }]
+    },
+    "port-config": {
+        "protocol-file": "package/consul.sc"
+    }
+}

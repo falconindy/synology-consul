@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+export CONSUL_SHARE_DIR="${SYNOPKG_PKGDEST_VOL}/consul"
+
+mkdir -p /var/packages/consul/var
+cat <<EOF > "/var/packages/consul/var/env.sh"
+export CONSUL_SHARE_DIR="$CONSUL_SHARE_DIR"
+EOF
+
+mkdir -p "${CONSUL_SHARE_DIR}/etc/consul.d"
+if [ ! -f "${CONSUL_SHARE_DIR}/etc/consul.d/consul.hcl" ]; then
+  mkdir -p "${CONSUL_SHARE_DIR}/var/lib/consul"
+  cat <<EOF > "${CONSUL_SHARE_DIR}/etc/consul.d/consul.hcl"
+data_dir="${CONSUL_SHARE_DIR}/var/lib/consul"
+client_addr = "0.0.0.0"
+ui_config {
+    enabled = true
+}
+server = true
+bootstrap_expect = 1
+enable_syslog = true
+bind_addr = "{{ GetInterfaceIP \"eth0\" }}"
+EOF
+fi;
+
+exit 0

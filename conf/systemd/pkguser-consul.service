@@ -1,0 +1,11 @@
+[Unit]
+Description=consul
+After=network-online.target
+
+[Service]
+Type=simple
+Slice=consul.slice
+ExecStart=/var/packages/consul/target/package/start.sh
+Restart=always
+RestartSec=5
+KillMode=process
