@@ -1,6 +1,6 @@
 # HashiCorp Consul Package for Synology DSM 7+
 
-> NOTE: This project is a derivative work of the fantastic job @prabirshrestha did on the Synology nomad package (https://github.com/prabirshrestha/synology-nomad)
+> NOTE: This project is a derivative work of the fantastic job [@prabirshrestha](https://www.github.com/prabirshrestha) did on the Synology nomad package (https://github.com/prabirshrestha/synology-nomad)
 
 # Building the .spk package
 
