@@ -3,9 +3,13 @@ Description=consul
 After=network-online.target
 
 [Service]
-Type=simple
+Type=notify
 Slice=consul.slice
-ExecStart=/var/packages/consul/target/package/start.sh
-Restart=always
-RestartSec=5
+EnvironmentFile=/var/packages/consul/var/env.sh
+ExecStart=/var/packages/consul/target/package/bin/consul agent -config-dir "${CONSUL_SHARE_DIR}/etc/consul.d/"
+ExecReload=/bin/kill --signal HUP $MAINPID
+Restart=on-failure
 KillMode=process
+KillSignal=SIGTERM
+RestartSec=5
+LimitNOFILE=65536

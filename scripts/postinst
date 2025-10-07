@@ -1,11 +1,11 @@
 #!/bin/sh
 set -e
 
-export CONSUL_SHARE_DIR="${SYNOPKG_PKGDEST_VOL}/consul"
+CONSUL_SHARE_DIR="${SYNOPKG_PKGDEST_VOL}/consul"
 
 mkdir -p /var/packages/consul/var
 cat <<EOF > "/var/packages/consul/var/env.sh"
-export CONSUL_SHARE_DIR="$CONSUL_SHARE_DIR"
+CONSUL_SHARE_DIR="$CONSUL_SHARE_DIR"
 EOF
 
 mkdir -p "${CONSUL_SHARE_DIR}/etc/consul.d"

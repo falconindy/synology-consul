@@ -8,7 +8,7 @@ Requires `curl` and `unzip`.
 consul binary will be downloaded on demand and bundled with the final .spk pacakge.
 
 ```bash
-git clone https://github.com/nbazzeghin/synology-consul.git
+git clone https://github.com/falconindy/synology-consul.git
 cd synology-consul
 ./build.sh
 ```
@@ -16,8 +16,7 @@ cd synology-consul
 To change the version to consul binary or architecture set the environment version.
 
 ```bash
-ARCH=amd64 CONSUL_VERSION=1.14.4 ./build.sh
-ARCH=arm64 CONSUL_VERSION=1.14.3 ./build.sh
+ARCH=amd64 CONSUL_VERSION=1.21.5 ./build.sh
 ```
 
 # Installing the package
