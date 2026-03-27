@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-export CONSUL_VERSION="${CONSUL_VERSION:-1.21.5}"
+export CONSUL_VERSION="${CONSUL_VERSION:-1.22.6}"
 export PACKAGE_VERSION="${CONSUL_VERSION}-1000"
 export OS="${OS:-linux}"
 export ARCH="${ARCH:-amd64}"
