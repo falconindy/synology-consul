@@ -46,6 +46,18 @@ Use the package center from Synology DSM to import the consul spk file.
 
 Consul is accessiblity via the `SynologyIP:8500` port. 
 
+# Security
+
+The default `consul.hcl` binds the HTTP API and UI to all interfaces (`0.0.0.0`)
+with no ACLs and no TLS configured. Anyone who can reach that port on your
+network can read and write the entire KV store, register/deregister services,
+and otherwise fully control the agent. This is fine on a trusted, isolated
+LAN, but if your Synology is reachable from a less trusted network (guest
+Wi-Fi, VPN clients, the internet, etc.), you should
+[enable ACLs](https://developer.hashicorp.com/consul/tutorials/security/access-control-setup-production)
+and/or [TLS](https://developer.hashicorp.com/consul/tutorials/security/tls-encryption-secure)
+and/or restrict `client_addr` before exposing it further.
+
 # Uninstalling
 
 * Uninstall can be done via the package center.
